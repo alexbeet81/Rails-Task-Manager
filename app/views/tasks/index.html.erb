@@ -1,11 +1,19 @@
 <h1>Task Manager</h1>
+<%= link_to 'Create New Task', new_task_path %>
 
 <% @tasks.each do |task| %>
-  <h2><%= task.title %></h2>
+  <h2><%= link_to task.title, task_path(task) %></h2>
   <p><%= task.details %></p>
+  <%= link_to "🗑",
+            task_path(task),
+            method: :delete,
+            data: { confirm: "Are you really quite sure?"} %>
   <% if task.completed == false %>
-    <p>☹️</p>
+    <%= link_to task_path(task) do %>
+      <%= fa_icon "square" %>
+    <% end %>
   <% else %>
-    <p>😃</p>
+    <%= fa_icon "check-square" %>
   <% end %>
 <% end %>
+

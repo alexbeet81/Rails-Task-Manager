@@ -8,12 +8,13 @@
             task_path(task),
             method: :delete,
             data: { confirm: "Are you really quite sure?"} %>
-  <% if task.completed == false %>
-    <%= link_to task_path(task) do %>
-      <%= fa_icon "square" %>
+  <%= link_to checkbox_path(task),
+              method: :patch do %>
+    <% if task.completed == false %>
+        <i class="far fa-square"></i>
+    <% else %>
+        <i class="far fa-check-square"></i>
     <% end %>
-  <% else %>
-    <%= fa_icon "check-square" %>
   <% end %>
 <% end %>
 

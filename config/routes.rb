@@ -12,5 +12,6 @@ Rails.application.routes.draw do
   # patch 'tasks/:id', to: 'tasks#update'
   # # remove a task
   # delete 'tasks/:id', to: 'tasks#destroy'
+  patch 'tasls/:id/checkbox', to: 'tasks#checkbox', as: :checkbox
   resources :tasks
 end
